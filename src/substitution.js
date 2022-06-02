@@ -13,23 +13,24 @@ const substitutionModule = (function () {
     const alphabetString = 'abcdefghijklmnopqrstuvwxyz',
       alphabetArray = alphabet.split('')
     let result = '',
+      //
       duplicateFound = alphabetArray.some((currentValue, currentIndex) => alphabetArray.indexOf(currentValue) !== currentIndex)
 
     if (duplicateFound) return false
 
-    input.toLowerCase().split('').map(letter => {
-      if (input[letter] === ' ') result += ' '
+    //
+    for (let i = 0; i < input.length; i++) {
+      if (input[i] === ' ') result += ' '
       if (encode) {
-        index = alphabetString.indexOf(input.charAt(letter))
+        //
+        index = alphabetString.indexOf(input.charAt(i))
+        //
         result += alphabet.charAt(index)
       } else {
-        index = alphabet.indexOf(input.charAt(letter))
+        index = alphabet.indexOf(input.charAt(i))
         result += alphabetString.charAt(index)
       }
-    })
-
-    // for (let i = 0; i < input.length; i++) {
-    // }
+    }
 
     return result
 

@@ -7,7 +7,7 @@ const caesarModule = (function () {
   const coder = (encodeOrdecode) => encodeOrdecode === true ? 1 : -1
 
   function caesar(input, shift, encode = true) {
-    if (shift === 0 || shift < -25 || shift > 25) return false
+    if (shift === 0 || shift < -25 || shift > 25 || !shift) return false
 
     const alphabet = [...'abcdefghijklmnopqrstuvwxyz'],
       codeArray = new Array()
@@ -38,7 +38,7 @@ const caesarModule = (function () {
   };
 })();
 
-const output = caesarModule.caesar("zebra magazine", -3)
+const output = caesarModule.caesar('@green kitten!', -1)
 console.log(output)
 
 module.exports = { caesar: caesarModule.caesar };
