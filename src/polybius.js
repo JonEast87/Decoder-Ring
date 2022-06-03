@@ -15,7 +15,7 @@ const polybiusModule = (function () {
   // cipher object used for decoding the message
   const decodeCipher = {
     11: 'a', 21: 'b', 31: 'c', 41: 'd', 51: 'e', 12: 'f', 22: 'g',
-    32: 'h', 42: 'i/j', 52: 'k', 13: 'l', 23: 'm', 33: 'n',
+    32: 'h', 42: 'ij', 52: 'k', 13: 'l', 23: 'm', 33: 'n',
     43: 'o', 53: 'p', 14: 'q', 24: 'r', 34: 's', 44: 't', 54: 'u',
     15: 'v', 25: 'w', 35: 'x', 45: 'y', 55: 'z', ' ': ' '
   }
@@ -25,7 +25,7 @@ const polybiusModule = (function () {
       /* Encoder Method */
 
       let code = ''
-
+      input = input.toLowerCase()
       // map passes a single letter to hasOwnProperty check and then either adds it the string or skips it
       input.split(/(.)/).filter(s => s).map(character => {
         if (encodeCipher.hasOwnProperty(character)) code = code + encodeCipher[character]
@@ -68,5 +68,8 @@ const polybiusModule = (function () {
     polybius,
   };
 })();
+
+const output = polybiusModule.polybius('kitten jitten')
+console.log(output)
 
 module.exports = { polybius: polybiusModule.polybius };

@@ -38,7 +38,4 @@ const caesarModule = (function () {
   };
 })();
 
-const output = caesarModule.caesar('@green kitten!', -1)
-console.log(output)
-
 module.exports = { caesar: caesarModule.caesar };
