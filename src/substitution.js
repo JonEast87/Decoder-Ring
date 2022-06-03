@@ -10,36 +10,25 @@ const substitutionModule = (function () {
     const alphabetString = 'abcdefghijklmnopqrstuvwxyz',
       alphabetArray = alphabet.split('')
     let result = '',
-      //
+      // .some is used to check for duplicates in the input alphabet
       duplicateFound = alphabetArray.some((currentValue, currentIndex) => alphabetArray.indexOf(currentValue) !== currentIndex)
 
     if (duplicateFound) return false
 
-    input = input.toLowerCase()
-    //
-    for (let i = 0; i < input.length; i++) {
-      if (input[i] === ' ') result += ' '
-      if (encode) {
-        //
-        index = alphabetString.indexOf(input.charAt(i))
-        //
-        result += alphabet.charAt(index)
-      } else {
-        index = alphabet.indexOf(input.charAt(i))
-        result += alphabetString.charAt(index)
-      }
-    }
+    input = input.toLowerCase().split('')
+
+    input.forEach(ele => {
+      if (ele === ' ') result += ' '
+      // grab the index that the input element exists at in the english alphabet and saves that current element to the result string
+      return (encode ? result += alphabet.charAt(alphabetString.indexOf(ele)) : result += alphabetString.charAt(alphabet.indexOf(ele)))
+    })
 
     return result
-
   }
 
   return {
     substitution,
   };
 })();
-
-const output = substitutionModule.substitution('ykrrpik', 'plmoknijbuhvygctfxrdzeswaq', false) // 'ykrrpik'
-console.log(output)
 
 module.exports = { substitution: substitutionModule.substitution };
