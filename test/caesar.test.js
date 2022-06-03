@@ -22,22 +22,20 @@ describe('caesar() tests written by Jonathan', () => {
     })
   })
 
-  // It ignores capital letters. (For example, the results of A Message and a message should be the same.)
-  describe('letter capitalization does not matter', () => {
-    it('should ignore capital letters', () => {
-      expect(caesar('green kitten', -1)).to.equal('fqddm jhssdm')
-    })
-  })
-
   // When encoding, it handles shifts that go past the end of the alphabet. (For example, shifting z to the right by 3 should cause the z to wrap around to the front of the alphabet, so that z becomes c.)
-  describe('when shift reaches end of the alphabet function should wrap it to the other end', () => {
+  describe('encode', () => {
     it('should wrap to the other side of the alphabet when necessary', () => {
       expect(caesar('green kitten', 24)).to.be.equal('epccl igrrcl')
     })
   })
   
-  // It maintains spaces and other nonalphabetic symbols in the message, before and after encoding or decoding.
-  describe('spaces and nonalphabetic symbols are maintained', () => {
+  // It ignores capital letters. (For example, the results of A Message and a message should be the same.)
+  describe('encode / decode', () => {
+    it('should ignore capital letters', () => {
+      expect(caesar('green kitten', -1)).to.equal('fqddm jhssdm')
+    })
+
+    // It maintains spaces and other nonalphabetic symbols in the message, before and after encoding or decoding.
     it('should maintain symbols and spaces', () => {
       expect(caesar('@green kitten!', -1)).to.be.equal('@fqddm jhssdm!')
     })

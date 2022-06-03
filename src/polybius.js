@@ -69,7 +69,4 @@ const polybiusModule = (function () {
   };
 })();
 
-const output = polybiusModule.polybius('kitten jitten')
-console.log(output)
-
 module.exports = { polybius: polybiusModule.polybius };

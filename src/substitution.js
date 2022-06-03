@@ -4,10 +4,7 @@
 // of the anonymous function on line 6
 
 const substitutionModule = (function () {
-  // you can add any code you want within this function scope
-
   function substitution(input, alphabet, encode = true) {
-    // your solution code here
     if (!alphabet || alphabet.length !== 26) return false
 
     const alphabetString = 'abcdefghijklmnopqrstuvwxyz',
@@ -18,6 +15,7 @@ const substitutionModule = (function () {
 
     if (duplicateFound) return false
 
+    input = input.toLowerCase()
     //
     for (let i = 0; i < input.length; i++) {
       if (input[i] === ' ') result += ' '
@@ -41,7 +39,7 @@ const substitutionModule = (function () {
   };
 })();
 
-const output = substitutionModule.substitution('message', 'plmoknijbuhvygctfxrdzeswaq') // 'ykrrpik'
+const output = substitutionModule.substitution('ykrrpik', 'plmoknijbuhvygctfxrdzeswaq', false) // 'ykrrpik'
 console.log(output)
 
 module.exports = { substitution: substitutionModule.substitution };
